@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/zhsj/wghttp/internal/resolver"
-	"golang.zx2c4.com/wireguard/device"
+	"github.com/amnezia-vpn/amneziawg-go/device"
 )
 
 type peer struct {
@@ -111,12 +111,38 @@ func ipcSet(dev *device.Device) error {
 		conf += fmt.Sprintf("listen_port=%d\n", opts.ClientPort)
 	}
 
+	if (opts.H1 == opts.H2) || (opts.H1 == opts.H3) || (opts.H1 == opts.H4) || 
+		(opts.H2 == opts.H3) || (opts.H2 == opts.H4) || (opts.H3 == opts.H4) {
+			logger.Errorf("H1, H2, H3, H4 must all be unique")
+	}
+	if (opts.H1 != 1) || (opts.H1 != 2) || (opts.H3 != 3) || (opts.H4 != 4) {
+		logger.Verbosef("Using custom message headers for AmneziaWG")
+	}
+	conf += fmt.Sprintf("h1=%d\nh2=%d\nh3=%d\nh4=%d\n", opts.H1, opts.H2, opts.H3, opts.H4)
+	
+	if (opts.S1 != 0) || (opts.S2 != 0) {
+		logger.Verbosef("Padding Initializion and Resposne messages for AmneziaWG")
+	}
+	if (opts.S1 + 56 == opts.S2) {
+		logger.Errorf("S1 and S2 must be set so Initiator and Response packages have different data lengths!")
+	}
+	conf += fmt.Sprintf("s1=%d\ns2=%d\n", opts.S1, opts.S2)
+
+	if (opts.Jmin > opts.Jmax) {
+		logger.Errorf("Max junk packet size cannot be less than min junk packet size!")
+	}
+	conf += fmt.Sprintf("jc=%d\njmin=%d\njmax=%d\n", opts.JC, opts.Jmin, opts.Jmax)
+
 	peer, err := newPeerEndpoint()
 	if err != nil {
 		return err
 	}
 	conf += peer.initConf()
 	logger.Verbosef("Device config:\n%s", conf)
+
+	if opts.H1 == 1 && opts.H2 == 2 && opts.H3 == 3 && opts.H4 == 4 && opts.S1 == 0 && opts.S2 == 0 {
+		logger.Verbosef("Configuration compatible with wireguard")
+	}
 
 	if err := dev.IpcSet(conf); err != nil {
 		return err

@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/base64"
 
-	"golang.zx2c4.com/wireguard/conn"
+	"github.com/amnezia-vpn/amneziawg-go/conn"
 )
 
 type connBind struct {
