@@ -75,6 +75,14 @@ type options struct {
 	Listen   string `long:"listen" env:"LISTEN" default:"localhost:8080" description:"HTTP & SOCKS5 server address"`
 	ExitMode string `long:"exit-mode" env:"EXIT_MODE" choice:"remote" choice:"local" default:"remote" description:"Exit mode"`
 	Verbose  bool   `short:"v" long:"verbose" description:"Show verbose debug information"`
-
+	S1       uint   `long:"s1" env:"S1" default:"0" description:"[Interface].S1\t\tInit Packet Padding. Amnezia: 15-150 recommended (max 1280)"`
+	S2       uint   `long:"s2" env:"S2" default:"0" description:"[Interface].S2\t\tResponse Packet Padding. Amnezia: 15-150 recommended (max 1280)"`
+	H1       uint32 `long:"h1" env:"H1" default:"1" description:"[Interface].H1\t\tInit Packet ID. Amnezia: 5-4294967295 recommended"`
+	H2       uint32 `long:"h2" env:"H2" default:"2" description:"[Interface].H2\t\tResponse Packet ID. Amnezia: 5-4294967295 recommended"`
+	H3       uint32 `long:"h3" env:"H3" default:"3" description:"[Interface].H3\t\tCookie Packet ID. Amnezia: 5-4294967295 recommended"`
+	H4       uint32 `long:"h4" env:"H4" default:"4" description:"[Interface].H4\t\tData Packet ID. Amnezia: 5-4294967295 recommended"`
+	JC       uint8  `long:"junk-count" env:"JC" default:"0" description:"[Interface].JC\t\tNumber of junk packets to send before sending Init. More or larger Junk Packets will delay (re-)connections. (Compatible with Wireguard)"`
+	Jmin     int    `long:"junk-min" env:"JMIN" default:"0" description:"[Interface].Jmin\tMin size of junk packets. Recommend: 50 (max 1279)"`
+	Jmax     int    `long:"junk-max" env:"JMAX" default:"0" description:"[Interface].Jmax\tMax size of junk packets. Recommend 1000 (max 1280)"`
 	ClientID string `long:"client-id" env:"CLIENT_ID" hidden:"true"`
 }

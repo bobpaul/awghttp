@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"golang.zx2c4.com/wireguard/device"
+	"github.com/amnezia-vpn/amneziawg-go/device"
 )
 
 func stats(dev *device.Device) func() (any, error) {
