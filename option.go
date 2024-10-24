@@ -82,7 +82,7 @@ type options struct {
 	H3       uint32 `long:"h3" env:"H3" default:"3" description:"[Interface].H3\t\tCookie Packet ID. Amnezia: 5-4294967295 recommended"`
 	H4       uint32 `long:"h4" env:"H4" default:"4" description:"[Interface].H4\t\tData Packet ID. Amnezia: 5-4294967295 recommended"`
 	JC       uint8  `long:"junk-count" env:"JC" default:"0" description:"[Interface].JC\t\tNumber of junk packets to send before sending Init. More or larger Junk Packets will delay (re-)connections. (Compatible with Wireguard)"`
-	Jmin     int    `long:"junk-min" env:"JMIN" default:"0" description:"[Interface].Jmin\tMin size of junk packets. Recommend: 50 (max 1279)"`
-	Jmax     int    `long:"junk-max" env:"JMAX" default:"0" description:"[Interface].Jmax\tMax size of junk packets. Recommend 1000 (max 1280)"`
+	Jmin     int    `long:"junk-min" env:"JMIN" default:"50" description:"[Interface].Jmin\tMin size of junk packets. (max 1279)"`
+	Jmax     int    `long:"junk-max" env:"JMAX" default:"1000" description:"[Interface].Jmax\tMax size of junk packets. (max 1280)"`
 	ClientID string `long:"client-id" env:"CLIENT_ID" hidden:"true"`
 }
