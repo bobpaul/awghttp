@@ -22,7 +22,8 @@ ARG TARGETARCH TARGETVARIANT
 RUN <<EOF
   set -ex
   export CGO_ENABLED=0
-  export GOPROXY=file://$(go env GOMODCACHE)/cache/download
+  # TODO re-enable GOPROXY
+  # export GOPROXY=file://$(go env GOMODCACHE)/cache/download
   export GOSUMDB=off
   export GOARCH="$TARGETARCH"
   case "$TARGETARCH" in
