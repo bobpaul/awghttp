@@ -6,10 +6,10 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/zhsj/wghttp/internal/resolver"
-	"github.com/zhsj/wghttp/internal/third_party/tailscale/httpproxy"
-	"github.com/zhsj/wghttp/internal/third_party/tailscale/proxymux"
-	"github.com/zhsj/wghttp/internal/third_party/tailscale/socks5"
+	"github.com/bobpaul/awghttp/internal/resolver"
+	"github.com/bobpaul/awghttp/internal/third_party/tailscale/httpproxy"
+	"github.com/bobpaul/awghttp/internal/third_party/tailscale/proxymux"
+	"github.com/bobpaul/awghttp/internal/third_party/tailscale/socks5"
 )
 
 type dialer func(ctx context.Context, network, address string) (net.Conn, error)

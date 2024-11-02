@@ -2,10 +2,10 @@
 
 ## Running as systemd service
 
-Since wghttp doesn't need any privilege, it's preferred to run as systemd user service.
+Since awghttp doesn't need any privilege, it's preferred to run as systemd user service.
 
-Copy [wghttp.service](./systemd/wghttp.service) to `~/.config/systemd/user/wghttp.service`.
-After setting the environment options in `wghttp.service`, run:
+Copy [awghttp.service](./systemd/awghttp.service) to `~/.config/systemd/user/awghttp.service`.
+After setting the environment options in `awghttp.service`, run:
 
 ```bash
 systemctl --user daemon-reload

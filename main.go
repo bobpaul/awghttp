@@ -14,7 +14,7 @@ import (
 	"github.com/amnezia-vpn/amneziawg-go/device"
 	"github.com/amnezia-vpn/amneziawg-go/tun/netstack"
 
-	"github.com/zhsj/wghttp/internal/proxy"
+	"github.com/bobpaul/awghttp/internal/proxy"
 )
 
 //go:embed README.md
@@ -27,8 +27,8 @@ var (
 
 func main() {
 	parser := flags.NewParser(&opts, flags.Default)
-	parser.LongDescription = fmt.Sprintf("wghttp %s\n\n", version())
-	parser.LongDescription += strings.Trim(strings.TrimPrefix(readme, "# wghttp"), "\n")
+	parser.LongDescription = fmt.Sprintf("awghttp %s\n\n", version())
+	parser.LongDescription += strings.Trim(strings.TrimPrefix(readme, "# awghttp"), "\n")
 	if _, err := parser.Parse(); err != nil {
 		code := 1
 		fe := &flags.Error{}
