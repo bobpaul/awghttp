@@ -7,7 +7,7 @@ import (
 	"net/netip"
 	"time"
 
-	"github.com/zhsj/wghttp/internal/resolver"
+	"github.com/bobpaul/awghttp/internal/resolver"
 	"github.com/amnezia-vpn/amneziawg-go/device"
 )
 

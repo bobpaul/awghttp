@@ -3,10 +3,10 @@
 ## From source
 
 ```bash
-go install github.com/zhsj/wghttp@latest
+go install github.com/bobpaul/awghttp@latest
 ```
 
-## Docker
+## Docker (todo)
 
 Docker images are publish at:
 

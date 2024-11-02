@@ -1,5 +1,5 @@
 [Unit]
-Description=wghttp
+Description=awghttp
 
 [Service]
 Type=simple
@@ -7,7 +7,7 @@ Environment=PRIVATE_KEY=FIXME
 Environment=PEER_KEY=FIXME
 Environment=PEER_ENDPOINT=FIXME
 Environment=CLIENT_IP=FIXME
-ExecStart=%h/go/bin/wghttp --listen 127.0.0.1:1080
+ExecStart=%h/go/bin/awghttp --listen 127.0.0.1:1080
 Restart=on-failure
 
 [Install]
